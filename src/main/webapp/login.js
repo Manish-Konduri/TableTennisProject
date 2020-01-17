@@ -23,7 +23,7 @@ $(document).ready(function(){
         $.get('login', {
                 Email : email,
                 pwd : password
-        }, function(responseText) {
+        }, function(responseText){
           alert(responseText);
                     if(responseText=="Failure")
                     alert("InCorrect Credentials");
