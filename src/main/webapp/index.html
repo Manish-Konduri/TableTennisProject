@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Table-Tennis-Tournament</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/app.css" rel="stylesheet"/>
-</head>
+    <link rel="import" href="header.html">
 <body>
 <div class="headr">
     <div><img id="logo" src="images/tt.png"><img id="LeagueName" src="images/tttext.png"></div>
@@ -13,7 +9,7 @@
 <hr>
 <div class="mainBackgroundImg"><img id="backgrtt"  src="images/backgrtt.jpg">
 <div class="login">
-    <form action="login" method="POST">
+    <form>
         <h1 align="center" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Login/Signup
         </h1>
         <hr>
@@ -23,11 +19,11 @@
         <label ><b>&nbsp;&nbsp;Password:</b></label>
         <input type="password" placeholder="Enter Password" id="pwd" name="pwd" required><br>&nbsp;
         <button type="button" id="loginBtn">LOGIN</a></button>
-        <button class="btn" onclick="document.getElementById('id01').style.display='inline-block'">Sign Up</button>
+        <button class="btn" id="signupBtn">Sign Up</button>
     </form>
 </div></div>
 <!--<div id="LoginPlayerDiv" onload=""> df </div>-->
-<div id="id01" class="modal">
+<div id="signup" class="modal">
 
     <form class="modal-content" action="Players" method="POST">
         <div class="container">
@@ -63,20 +59,9 @@
     </form>
 </div>
 
-<script>
-        // Get the modal
-        var modal = document.getElementById('id01');
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="LoginPlayer.js"></script>
-<script src="login.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/login.js"></script>
 </body>
 
 </html>

@@ -1,12 +1,27 @@
 
+$(document).ready(function(){
+var id1:document.cookie
+$.get('user', {
+ var id = id1;
+}, function(response) {
+if(responseText=="Failure")
+{
+alert("fail");
+}
+else{
+  var PlayerLoginInfo = JSON.parse(response);
+  console.log(PlayerLoginInfo);
+  player(PlayerLoginInfo)
+}
+});
 
-   function SetUi(PlayerLoginInfo) {
+});
+
+function player(PlayerLoginInfo) {
        // window.location.replace("player.html");
-       var PlayerLoginInfo = JSON.parse(responseText);
-                       SetUi(PlayerLoginInfo);
-                        console.log(PlayerLoginInfo);
+
        console.log(PlayerLoginInfo);
-       const app = document.getElementById('LoginPlayerDiv');
+       const main = document.getElementById('LoginPlayerDiv');
 
 
                const profileCard = document.createElement('div');
@@ -29,7 +44,7 @@
 
               // Gender = addSkill(data[i]);
 
-               contentAppend(app, profileCard, card, h4, p);
+               contentAppend(main, profileCard, card, h4, p);
 
 
       }
@@ -52,10 +67,10 @@
        return p;
    }
 
-   function contentAppend(app, profileCard, card, h4, p) {
+   function contentAppend(main, profileCard, card, h4, p) {
        card.appendChild(h4);
        card.appendChild(p);
        profileCard.appendChild(card);
-       app.appendChild(profileCard);
+       main.appendChild(profileCard);
 
    }
