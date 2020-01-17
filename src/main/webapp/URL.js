@@ -35,7 +35,7 @@ function built(data, r, m) {
 function AddImage() {
 
         image = document.createElement('img');
-        image.src = "https://randomuser.me/api/portraits/med/women/61.jpg";
+        image.src = "images/propic.png";
         image.setAttribute('class', 'img');
 
         console.log(image)

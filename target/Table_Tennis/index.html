@@ -1,157 +1,32 @@
 <!DOCTYPE html>
 <html>
+<head>
 <title>Table-Tennis-Tournament</title>
-<style>
-    body {font-family: Arial, Helvetica, sans-serif;
-    }
-    * {
-        box-sizing: border-box;
-    }
-    input[type=text],
-    input[type=password] {
-        width: 100%;
-        padding: 15px;
-        margin: 5px 0 22px 0px;
-        display: inline-block;
-        border: none;
-        background: #f1f1f1;
-    }
-    input[type=text]:focus,
-    input[type=password]:focus {
-        background-color: #ddd;
-    }
-    button {
-        background-color: rgb(6, 88, 212);
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: auto;
-        opacity: 0.9;
-    }
-    #logo {
-        position: relative;
-        display: inline-block;
-        height:20%;
-        width: 20%;
-    }
-    #LeagueName {
-        position: relative;
-        display:inline-block;
-        top:-40px;
-        font-size: 300%;
-        left: 49%;
-
-
-    }
-    #loginbtn{
-        border-radius: 6%;
-        width: 46%;
-    }
-    .btn {
-        border-radius: 6%;
-        width: 48%;
-    }
-    .mainBackgroundImg{
-        width: 74%;
-        height: 100%;
-        position:relative;
-        display: inline-block;
-    }
-    button:hover {
-        opacity: 1;
-    }
-    .signupbtn {
-        left: 50%;
-        margin-left: 60px;
-        width: 30%;
-    }
-    .container {
-        padding: 16px;
-    }
-    .headr{
-        width: 50%;
-        height: 50%;
-    }
-    .modal {
-        display: none;
-        position: fixed;
-
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;/* scroll if needed */
-        background-color: rgba(83, 67, 67, 0.5);
-        padding-top: 50px;
-    }
-    .mainBackgroundImg{
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-    }
-    .modal-content {
-        background-color: #fefefe;
-        margin: 5% auto 15% auto;
-        border: 3px solid rgb(0, 0, 0);
-        width: 80%;
-
-    }
-    td{
-        width: 16.666%;
-        border: 2px solid black;
-        height: 60px;
-        color: white;
-        background-color: black;
-        opacity: 0.9;
-    }
-    td:hover{
-        opacity:1 ;
-    }
-    hr {
-        border: 1px solid black;
-        margin-bottom: 25px;
-    }
-    .login {
-        float: right;
-        position: relative;
-        height: 25%;
-        width: 20%;
-        border: 1px solid black;
-        border-radius: 6%;
-    }
-    @media screen and (max-width: 300px) {
-        .cancelbtn,
-        .signupbtn {
-            width: 100%;
-        }
-
-    }
-</style>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/app.css" rel="stylesheet"/>
+</head>
 <body>
 <div class="headr">
-    <img id="logo" src="TT_logo.png">
-    <div id="LeagueName" >Table-Tennis-Tournament</div>
+    <div><img id="logo" src="images/tt.png"><img id="LeagueName" src="images/tttext.png"></div>
 </div>
-<div><table style="width: 100%;"><tr align="center"><td >Live Matches</td><td>Points Table</td><td>Schedule</td><td><a href="playercontent.html">Players Info</a></td><td>Rule Book</td><td>Notifications</td></tr></table></div>
+<div><table style="width: 100%;"><tr align="center"><td >Live Matches</td><td>Points Table</td><td>Schedule</td><td><a href="playercontent.html">Players Info</a></td><td>Rule Book</td><td>Notifications</td><td></td></tr></table></div>
 <hr>
-<div class="mainBackgroundImg"></div>
+<div class="mainBackgroundImg"><img id="backgrtt"  src="images/backgrtt.jpg">
 <div class="login">
-    <form action="log" method="POST">
+    <form action="login" method="POST">
         <h1 align="center" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Login/Signup
         </h1>
         <hr>
-        <label for="email"><b>&nbsp;&nbsp;Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
+        <label ><b>&nbsp;&nbsp;Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
         <input type="text" placeholder="Enter Email" id="Email" name="Email" required><br>
         <div> &nbsp;</div>
-        <label for="psw"><b>&nbsp;&nbsp;Password:</b></label>
+        <label ><b>&nbsp;&nbsp;Password:</b></label>
         <input type="password" placeholder="Enter Password" id="pwd" name="pwd" required><br>&nbsp;
-        <button type="button" id="loginbtn" onClick="location.href='loginplayer.html'">LOGIN</button>
+        <button type="button" id="loginBtn">LOGIN</a></button>
         <button class="btn" onclick="document.getElementById('id01').style.display='inline-block'">Sign Up</button>
     </form>
-</div>
+</div></div>
+<!--<div id="LoginPlayerDiv" onload=""> df </div>-->
 <div id="id01" class="modal">
 
     <form class="modal-content" action="Players" method="POST">
@@ -162,16 +37,16 @@
             <label><b>Name</b></label>
             <input type="text" placeholder="Enter Name" name="Name" required>
 
-            <label for="email"><b>Email</b></label>
+            <label><b>Email</b></label>
             <input type="email" placeholder="Enter Email" name="Email" required>
 
-            <label for="psw"><b>Password</b></label>
+            <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="pwd" required>
 
-            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <label><b>Repeat Password</b></label>
             <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
-            <label for="Mobile No."><b>Mobile No.</b></label>
+            <label><b>Mobile No.</b></label>
             <input type="text" placeholder="10 digit number"  name="Phone" required>
 
             <label>
@@ -199,7 +74,9 @@
     </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="LoginPlayer.js"></script>
 <script src="login.js"></script>
+
 </body>
 
 </html>
