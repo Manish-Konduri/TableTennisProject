@@ -18,9 +18,17 @@ public class UserDetails extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         DataBase db = new DataBase();
-        String id = request.getParameter("id");
+        String stridcap = request.getParameter("email");
+        int i;
+        String idcap="";
+        for(i=3;i<stridcap.length();i++)
+        {
+            idcap=idcap+stridcap.charAt(i);
+        }
+        int id = Integer.parseInt(idcap);
+        System.out.println(id+"---------");
         //  String finalPassword =  PasswordEncryption.encryption(password);
         Statement statement;
         Connection connection;
@@ -43,7 +51,7 @@ public class UserDetails extends HttpServlet {
                 System.out.println(userDetails);
             }
             else
-                resp.setStatus(401);
+                resp.getWriter().write("Failure");
         }
         catch (Exception e){
             System.out.println("No Table");

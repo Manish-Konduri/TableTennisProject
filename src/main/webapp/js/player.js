@@ -1,18 +1,11 @@
 
 $(document).ready(function(){
-var id1:document.cookie
-$.get('user', {
- var id = id1;
+$.post('user', {
+ email:document.cookie
 }, function(response) {
-if(responseText=="Failure")
-{
-alert("fail");
-}
-else{
-  var PlayerLoginInfo = JSON.parse(response);
-  console.log(PlayerLoginInfo);
-  player(PlayerLoginInfo)
-}
+console.log(response);
+var PlayerLoginInfo = JSON.parse(response);
+player(PlayerLoginInfo);
 });
 
 });
@@ -32,7 +25,7 @@ function player(PlayerLoginInfo) {
                card.setAttribute('class', 'container');
                console.log(profileCard)
 
-               console.log(app)
+               //console.log(app)
 
                h4 = AddName(PlayerLoginInfo);
 

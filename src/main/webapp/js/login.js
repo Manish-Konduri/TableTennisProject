@@ -29,7 +29,6 @@ $(document).ready(function(){
      success: function(response) {
 
 
-            console.log("test:"+document.cookie);
            window.location.replace("player.html");
 //          player(PlayerLoginInfo)
 //          window.location.replace("player.html");

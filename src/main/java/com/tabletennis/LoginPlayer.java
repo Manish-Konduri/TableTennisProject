@@ -1,5 +1,6 @@
 package com.tabletennis;
 
+import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+
 @WebServlet(name="login",urlPatterns = "/login")
 public class LoginPlayer extends HttpServlet {
     public LoginPlayer()
@@ -27,24 +30,34 @@ public class LoginPlayer extends HttpServlet {
         Statement statement;
         Connection connection;
         try {
+            resp.setContentType("text/html");
             Class.forName("com.mysql.jdbc.Driver");
 
             // Connects to mysql service through a connection url and credentials
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "manishk", "manish@145#");
             statement = connection.createStatement();
-            String q = "select MemberId from teamplayer where Email='" + email + "' and password= '" + password + "'";
+            String q = "select * from teamplayer where Email='" + email + "' and password= '" + password + "'";
             ResultSet rs = statement.executeQuery(q);
+            JSONObject userDetails =  new JSONObject();
+        //    Gson userDetails = new Gson();
             String id="";
             while(rs.next()) {
                 id = rs.getString("MemberId");
+                System.out.println(id);
             }
-            JSONObject userDetails = new JSONObject();
+//            if (rs.next()) {
+//                userDetails.put("id", rs.getString("MemberId"));
+//                userDetails.put("email", rs.getString("Email"));
+////                 arrayList.add(rs.getString("MemberId"));
+////                 arrayList.add( rs.getString("Email"));
+//            }
+//            userDetails.toJson(arrayList);
+           // System.out.println(userDetails.length());
             if (id.length()>0) {
-//                userDetails.put("name", rs.getString("Name"));
 //                userDetails.put("email", rs.getString("Email"));
                 Cookie c = new Cookie("id",id);
-              //  System.out.println(c);
-                resp.getWriter().write(c.getValue());
+
+                //resp.getWriter().write(c.getValue());
                 resp.addCookie(c);
 
             }
