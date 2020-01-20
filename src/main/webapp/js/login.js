@@ -27,11 +27,12 @@ $(document).ready(function(){
      url: "login",
      data: loginObj,
      success: function(response) {
+     var resp = JSON.parse(response);
+        if(resp.role=="Player")
+          window.location.replace("afterLogin.html");
+        else if(resp.role=="TeamManager")
+          window.location.replace("player.html");
 
-
-           window.location.replace("player.html");
-//          player(PlayerLoginInfo)
-//          window.location.replace("player.html");
      },
      error: function(error) {
             alert("InCorrect Credentials");
@@ -39,64 +40,3 @@ $(document).ready(function(){
    });
    })
    })
-/*
-function player(PlayerLoginInfo) {
-       //
-
-       console.log(PlayerLoginInfo);
-
-                window.location.replace("player.html");
-                console.log("hi")
-                const main = document.getElementById('LoginPlayerDiv');
-
-               const profileCard = document.createElement('div');
-               profileCard.setAttribute('class', 'profileCard');
-
-
-               const card = document.createElement('div');
-               card.setAttribute('class', 'container');
-               console.log(profileCard)
-
-             // console.log(main)
-
-               h4 = AddName(PlayerLoginInfo);
-
-               //p1 = addTeamName(data);
-
-               p = AddEmail(PlayerLoginInfo);
-
-              // Phone = AddPhone(data[i]);
-
-              // Gender = addSkill(data[i]);
-
-               contentAppend(main, profileCard, card, h4, p);
-
-
-      }
-
-   function AddName(PlayerLoginInfo) {
-       const h4 = document.createElement('h4');
-       h4.setAttribute('class','name')
-       h4.textContent = PlayerLoginInfo.name;
-       console.log(h4)
-       return h4;
-
-   }
-
-   function AddEmail(PlayerLoginInfo) {
-
-       const p = document.createElement('p');
-       p.setAttribute('class', 'email')
-       p.textContent = "E-mail: " + PlayerLoginInfo.email;
-       console.log(p)
-       return p;
-   }
-
-   function contentAppend(main, profileCard, card, h4, p) {
-       card.appendChild(h4);
-       card.appendChild(p);
-       profileCard.appendChild(card);
-
-       main.appendChild(profileCard);
-
-   }*/

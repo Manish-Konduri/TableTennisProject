@@ -1,0 +1,104 @@
+/* Style the sidebar - fixed full height */
+/* .sidebar {
+  height: 100%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 110px;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  
+}
+
+
+/* Style sidebar links */
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration:none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Style the main content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
+
+
+
+
+
+
+
+<!-- The sidebar -->
+    <div class="sidebar">
+        <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#Services"><i class="fa fa-fw fa-wrench"></i> Services</a>  
+        <a href="#Profile"><i class="fa fa-fw fa-user"></i> Profile</a>
+        <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+    </div>  
+
+
+
+
+
+
+
+
+<!-- tab   -->
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    /* background-color: #f1f1f1; */
+    background-color:rgb(65, 64, 64);
+    margin-left: 95px;
+    margin-top: -63px;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: grey;
+    /* outline:solid 0.1px gainsboro;    */
+    cursor: pointer;
+    color: white;
+    font-size: larger;
+    padding: 20px 22px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    /* background-color: #ddd; */
+    background-color:red;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }

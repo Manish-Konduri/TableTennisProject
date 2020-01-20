@@ -43,6 +43,7 @@ public class LoginPlayer extends HttpServlet {
             String id="";
             while(rs.next()) {
                 id = rs.getString("MemberId");
+                userDetails.put("role",rs.getString("role"));
                 System.out.println(id);
             }
 //            if (rs.next()) {
@@ -54,7 +55,7 @@ public class LoginPlayer extends HttpServlet {
 //            userDetails.toJson(arrayList);
            // System.out.println(userDetails.length());
             if (id.length()>0) {
-//                userDetails.put("email", rs.getString("Email"));
+               resp.getWriter().write(userDetails.toString());
                 Cookie c = new Cookie("id",id);
 
                 //resp.getWriter().write(c.getValue());

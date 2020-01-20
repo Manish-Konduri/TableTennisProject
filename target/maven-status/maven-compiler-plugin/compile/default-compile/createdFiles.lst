@@ -1,6 +1,7 @@
 com/tabletennis/UserDetails.class
 com/tabletennis/PasswordEncryption.class
 com/tabletennis/DataBase.class
+com/tabletennis/TeamManager.class
 com/tabletennis/LoginPlayerEdit.class
 com/tabletennis/PlayerServlet.class
 com/tabletennis/LoginPlayer.class

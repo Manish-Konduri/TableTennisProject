@@ -1,4 +1,4 @@
-var inatiator = 1;
+var inatiator = 4;
 var r = 0;
 var m = inatiator;
 
@@ -72,8 +72,6 @@ function load() {
 }
 
 function callURL() {
-    var url = 'http://localhost:8080/Table_Tennis/Players'
+    var url = 'http://localhost:8080/Players'
     return url
 }
-
-

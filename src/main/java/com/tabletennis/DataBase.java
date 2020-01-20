@@ -26,11 +26,11 @@ public class DataBase {
 
 //    INSERT INTO `teamplayer`(`Name`,`TeamName`,`phone`,`Email`,`password`) VALUES ('"+id+"','"+name+"','"+teamname+"','"+skill+"','"+phone+"','"+Email+"','"+password+"','"+TodayStatus+"');
 
-    public void add(int id, String name, String teamname, int skill, String phone, String Email, String password,String TodayStatus) throws SQLException {
+    public void add(int id, String name, String teamname, int skill, String phone, String Email, String password,String TodayStatus, String Role) throws SQLException {
 
 
 //        System.out.println("insert into tesdb values ("+id+",'"+name+"','"+description+"','"+dateString+"','"+Initial+"')");
-        String q= "INSERT INTO `teamplayer`(`Name`,`TeamName`,`skill`,`phone`,`Email`,`password`,`TodayStatus`) VALUES ('"+name+"','"+teamname+"','"+4+"','"+phone+"','"+Email+"','"+password+"','"+0+"')";
+        String q= "INSERT INTO `teamplayer`(`Name`,`TeamName`,`skill`,`phone`,`Email`,`password`,`TodayStatus`) VALUES ('"+name+"','"+teamname+"','"+4+"','"+phone+"','"+Email+"','"+password+"','"+0+"','"+Role+"')";
         statement.executeUpdate(q);
     }
     public JSONArray display() throws SQLException {

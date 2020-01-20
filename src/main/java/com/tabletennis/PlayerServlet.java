@@ -27,10 +27,11 @@ public class PlayerServlet extends HttpServlet {
         String phone = request.getParameter("Phone");
         String email = request.getParameter("Email");
         String password = request.getParameter("pwd");
+        String role = "Player";
 //        PasswordEncryption passwordEncryption = new PasswordEncryption();
 //        String finalPassword =  passwordEncryption.encryption(password);
         try {
-            db.add(4,playerName,teamName,3,phone,email,password,"1");
+            db.add(4,playerName,teamName,3,phone,email,password,"1",role);
         } catch (SQLException e) {
             e.printStackTrace();
         }

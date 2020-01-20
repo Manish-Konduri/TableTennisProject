@@ -1,0 +1,225 @@
+input[type=text],input[type=password],input[type=email] {
+  width: 30%;
+  padding: 15px;
+  margin: 5px 0 22px 0px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+::placeholder {
+  color: black;
+  font-size: 15px;
+  text-align: start;
+  opacity: 1; 
+  font-family: monospace;
+}
+.fa-fw {
+    width: 1.28571429em;
+    text-align: center;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+#logo{
+    margin-top: 0%;
+    opacity: 80%;
+}
+#titlelogo{
+    margin-left: 1%;
+    color: brown;
+    opacity: 90%;
+    font-stretch: normal;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 115px;
+    font-family: monospace;
+    font-variant: petite-caps;
+}
+i {
+    font-style: italic;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+}
+/* user agent stylesheet */
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+#Profile{
+  border: 2px solid white;
+ border-radius: 8px;
+  width: 60%;
+  margin-left: 16%;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  
+}
+#profileCard{
+  
+  padding: 5%;
+  display: none;
+}
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+    background: url("1526843.png");
+    background-size: 100%;
+    background-attachment: fixed; 
+    margin-left: 2%;
+
+}
+ 
+#navbar {
+    overflow: hidden;
+    background-color:rgb(105, 59, 59);
+    /* opacity: 90%; */
+    margin-top: -1%;
+    margin-left: -1%;
+    width: 100%;
+    outline: indianred;
+  }
+  
+  #navbar a {
+    float: left;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+    width:14%;
+  }
+  #navbar a:hover, #dropdown:hover #dropbtn {
+    background-color: red;
+    color: black;
+  }
+
+  #dropdown {
+    float: left;
+    overflow: hidden;   
+  }
+  
+  #dropdown #dropbtn {
+    font-size: 18px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  .content {
+    padding: 16px;
+    color: lightblue;
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 8.5%;
+    width: 90%;
+  }
+  
+  .sticky + .content {
+    padding-top: 100px;
+  }
+  
+  
+  #dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  #dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    width:80%;
+  }
+  
+  #dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  #dropdown:hover #dropdown-content {
+    display: block;
+  }
+  .openbtn {
+    font-size: 32px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 0px 5px;
+    margin-left: 5px;
+    border: none;
+    opacity: 1;
+    float: left;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    margin-top: 10%;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  #main {
+    transition: margin-left .5s;
+    padding: 0px;
+    margin-top: -1%; 
+    
+  }
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+
+
+

@@ -41,9 +41,13 @@ public class UserDetails extends HttpServlet {
             String q = "select * from teamplayer where MemberId='" + id + "'";
             ResultSet rs = statement.executeQuery(q);
             JSONObject userDetails = new JSONObject();
+            String role="";
             if (rs.next()) {
                 userDetails.put("name", rs.getString("Name"));
                 userDetails.put("email", rs.getString("Email"));
+                userDetails.put("role",rs.getString("role"));
+               userDetails.put("phone", rs.getString("phone"));
+               userDetails.put("skill", rs.getString("skill"));
             }
 
             if(userDetails.length()>0) {
