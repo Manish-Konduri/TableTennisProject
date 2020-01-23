@@ -18,15 +18,17 @@ public class LoginPlayerEdit extends HttpServlet {
 
     }
 //UPDATE teamplayer SET Name="KONDURI" WHERE Name="erhgsdf";
-    Statement statement;
-    Connection connection;
+
     @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         DataBase db = new DataBase();
         String playerName = request.getParameter("Name");
         String phone = request.getParameter("Phone");
         String email = request.getParameter("Email");
         String stridcap = request.getParameter("id");
+        System.out.println("----"+playerName+"---");
+        Statement statement;
+        Connection connection;
         int i;
         String idcap = "";
         for (i = 3; i < stridcap.length(); i++) {
@@ -41,15 +43,16 @@ public class LoginPlayerEdit extends HttpServlet {
             statement = connection.createStatement();
 
             int id = Integer.parseInt(idcap);
-            String q = "UPDATE teamplayer SET Name='" + playerName + "' WHERE MemberId= '" + id + "'";
-            statement.executeQuery(q);
-            q = "UPDATE teamplayer SET Email='" + email + "' WHERE MemberId= '" + id + "'";
-            statement.executeQuery(q);
-            q = "UPDATE teamplayer SET phone='" + phone + "' WHERE MemberId= '" + id + "'";
-            statement.executeQuery(q);
+            String q = "UPDATE teamplayer SET Name='" + playerName + "' WHERE MemberId= " + id + "";
+            statement.executeUpdate(q);
+            q = "UPDATE teamplayer SET Email='" + email + "' WHERE MemberId= " + id + "";
+            statement.executeUpdate(q);
+            q = "UPDATE teamplayer SET phone='" + phone + "' WHERE MemberId= " + id + "";
+            statement.executeUpdate(q);
 
         } catch (SQLException | ClassNotFoundException e) {
-            resp.setStatus(401);
+//            resp.setStatus(401);
+            e.printStackTrace();
         }
 
 

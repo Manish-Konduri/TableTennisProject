@@ -67,10 +67,13 @@ public class LoginPlayer extends HttpServlet {
 //                resp.getWriter().write(userDetails.toString());
             else
                 resp.setStatus(401);
+
         }
         catch (Exception e){
             e.printStackTrace();
         }
 
+
     }
+
 }

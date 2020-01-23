@@ -36,10 +36,10 @@ function player(PlayerLoginInfo) {
   </div>
   <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="Services"><i class="fa fa-fw fa-wrench"></i> Services</a>  
+      <a onclick="viewJoinTournament()"><i class="fa fa-fw fa-users"></i> Tournaments</a>
       <a onclick="displayPlayerCard()"><i class="fa fa-fw fa-user"></i> Profile</a>
       <a href="Contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-      <a href="About"><i class="fa fa-fw fa-info-circle"></i>&nbsp;About</a>
+      <a onclick="logout()"><i class="fa fa-fw fa-info-circle"></i>&nbsp;Log Out</a>
   </div>`
   
    const profileCard=`<div id = "profileCard">
@@ -49,18 +49,21 @@ function player(PlayerLoginInfo) {
 
                                         <form>
                                             <label style="color:aliceblue"><b>Name:</b></label>&nbsp;&nbsp;&nbsp;
-                                            <input id = "changeName" type="text" placeholder="${PlayerLoginInfo.name}" name="uname" disabled><br><br>
+                                            <input id = "changeName" type="text" placeholder="${PlayerLoginInfo.name}" name="Name" disabled><br><br>
                                             <label style="color:aliceblue" ><b>Email:</b></label>&nbsp;&nbsp;&nbsp;
-                                            <input id = "changeEmail" type="text" placeholder="${PlayerLoginInfo.email}" name="uname" disabled><br><br>
+                                            <input id = "changeEmail" type="text" placeholder="${PlayerLoginInfo.email}" name="Email" disabled><br><br>
                                             <label style="color:aliceblue" ><b>Skill</b></label>&nbsp;&nbsp;&nbsp;
                                             <input id = "changeSkill" type="radio" ><input type="radio" ><input type="radio" ><input type="radio" ><input type="radio" ><br><br><br>
                                             <label style="color:aliceblue" ><b>Phone</b></label>&nbsp;&nbsp;&nbsp;
-                                            <input id = "changePhone" type="text" placeholder="${PlayerLoginInfo.phone}" name="uname" disabled>
+                                            <input id = "changePhone" type="text" placeholder="${PlayerLoginInfo.phone}" name="Phone" disabled>
                                         </form>
                                         <button type="button" onclick= "Edit()">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button id ="submitBtn" type="submit" onclick="hidePlayerCard()" disabled>Submit</button>
+                                        <button id ="submitBtn" type="button" onclick="editDetails()" disabled >Submit</button>
                                     </div>
-                                </div>`
+                                </div>
+                           <div id="openViewTournamentBox">
+
+                               </div>`
         
         $("#main").append($.parseHTML(template))
         $("#Profile").append($.parseHTML(profileCard))
@@ -99,8 +102,9 @@ function myFunction(sticky) {
     }
 }
 function Edit(){
+    if(document.cookie!=""){
     $( "#changeName" ).prop( "disabled", false );
-    $( "#submit" ).prop( "disabled", false );
+     $( "#submitBtn" ).prop( "disabled", false );
     $( "#changeName" ).prop( "placeholder", "Enter Name" );
     $( "#changeEmail" ).prop( "disabled", false );
     $( "#changeEmail" ).prop( "required", true );
@@ -109,7 +113,12 @@ function Edit(){
     $( "#changeEmail" ).prop( "required", true );
     $( "#changePhone" ).prop( "placeholder", "Enter Phone" );
     $( "#changeName" ).focus()
-
+}
+else
+{
+alert("Login You *****")
+window.location.replace("index.html");
+}
 }
 
 function displayPlayerCard()
@@ -120,53 +129,85 @@ function hidePlayerCard()
 {
     $("#profileCard").hide();
 }
+function logout(){
+       $.ajax({
+         type: "POST",
+         url: "logout",
+         success: function(editResponse) {
+         console.log("Success");
+         window.location.replace("index.html");
+          },
+              error: function(error) {
+                     alert("InCorrect Credentials");
+              }
+    })
+}
+function editDetails(){
+ck=document.cookie;
+console.log(ck)
+if(ck!=""){
+var name = $('#changeName').val();
+   var email = $('#changeEmail').val();
+   var phone = $('#changePhone').val();
 
+ var loginObj = {"Email" : email, "Name" : name, "Phone":phone,"id":document.cookie}
+ console.log(loginObj)
+   $.ajax({
+     type: "POST",
+     url: "editForm",
+     data: loginObj,
+     success: function(editResponse) {
+     console.log("Success");
+      },
+          error: function(error) {
+                 alert("InCorrect Credentials");
+          }
+})
+}
+else{
+alert("Login First")
+}
+}
 
-// const profileCard = document.createElement('div');
-// profileCard.setAttribute('class', 'profileCard
-// const card = document.createElement('div');
-//     card.setAttribute('class', 'container');
-//     console.log(profileCard)
+function viewJoinTournament(){
+     $.ajax({
+         type: "GET",
+         url: "joinTournament",
+         success: function(response) {
+                           var resp = JSON.parse(response);
+                           console.log(resp);
+                           showTournament(resp);
+                           },
+         error: function(error)
+         {alert("cannot view tournaments");}
+        })
 
-//     //console.log(app)
+}
+function joinTournament(resp){
 
-//     h4 = AddName(PlayerLoginInfo);
+//    var name = $('#tName').val();
+    console.log(resp);
+     var loginObj = {"Tournament" : resp,"Id":document.cookie}
+         console.log(loginObj)
+         $.ajax({
+                  type: "POST",
+                  url: "joinTournament",
+                  data: loginObj,
+                   error: function(error)
+                           {alert("You have already registered in this tournament");}
+                 })
+}
+function showTournament(resp){
+for(var i=0;i< resp.length;i++){
 
-//     //p1 = addTeamName(data);
+    const  showTournament=` <div class="showTournaments">
+                                        <div>
+                                            <div id="tName">
+                                                ${resp[i]}
+                                                <button id="viewJoinTournamentBtm" onclick="joinTournament('${resp[i]}')">Join</button>
+                                            </div>
+                                        </div>
+                                    </div>`
+              $("#openViewTournamentBox").append($.parseHTML(showTournament))}
 
-//     p = AddEmail(PlayerLoginInfo);
-
-//     // Phone = AddPhone(data[i]);
-
-//     // Gender = addSkill(data[i]);
-
-//     contentAppend(main, profileCard, card, h4, p);
-
-
-// }
-
-// function AddName(q) {
-//     const h4 = document.createElement('h4');
-//     h4.setAttribute('class', 'name')
-//     h4.textContent = q.name;
-//     console.log(h4)
-//     return h4;
-
-// }
-
-// function AddEmail(q) {
-
-//     const p = document.createElement('p');
-//     p.setAttribute('class', 'EMAIL')
-//     p.textContent = "E-mail: " + q.email;
-//     console.log(p)
-//     return p;
-// }
-
-// function contentAppend(main, profileCard, card, h4, p) {
-//     card.appendChild(h4);
-//     card.appendChild(p);
-//     profileCard.appendChild(card);
-//     main.appendChild(profileCard);
-
-// }
+}

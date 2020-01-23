@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/manager.js"></script>
+
+    </head>
+    <body>
+    <button onclick="openCreateTournamentBox()">
+        <b>Create Tournament</b>
+    </button>
+    <button id="viewTournament" onclick="viewTournament()">
+        <b> View Tournament </b>
+    </button>
+    <div id="openCreateTournamentBox" style="display:none;">
+        <form>
+            <label >Tournament Name:</label>
+            <input id="tournamentName" type="text" name="tournamentName" required>
+
+            <label >No. of Sets:</label>
+            <input id="Sets" type="text" name="Sets" required>
+
+            <label >Player Count:</label>
+            <input id="playerCount" type="text" name="playerCount" required>
+        </form>
+        <button onclick="createTournament()">
+            <b> Submit </b>
+        </button>
+
+    </div>
+    <div id="openViewTournamentBox">
+
+    </div>
+    <link rel="stylesheet" href="css/manager.css">
+    </body>
+
+</html>

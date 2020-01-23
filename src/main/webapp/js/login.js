@@ -31,7 +31,7 @@ $(document).ready(function(){
         if(resp.role=="Player")
           window.location.replace("afterLogin.html");
         else if(resp.role=="TeamManager")
-          window.location.replace("player.html");
+          window.location.replace("manager.html");
 
      },
      error: function(error) {
