@@ -38,13 +38,14 @@ function viewTournament() {
 
 }
 function showTournament(resp) {
-    for (var i = 0; i < resp.length; i++) {
+    for (var i = 1; i <= resp.length; i++) {
         const showTournament = ` <div class="showTournaments">
                                         <div>
                                             <div id="tName${i}">
                                                 ${resp[i]}
                                                 <input id="roundNo${i}" type="text" name="RoundNo">
                                                 <button id="viewTournamentDetails${i}" onclick="viewTournamentDetails('${resp[i]}',${i})">View Details</button>
+                                                <button onclick="selectMatch()">Select Match</button>
                                                 <div id="ExtraDetails${i}"> </div> 
                                             </div>
                                               
@@ -58,7 +59,7 @@ function showTournament(resp) {
 function viewTournamentDetails(resp, i) {
     var TournamentNames = resp;
     var roundNo = $('#roundNo' + String(i)).val();
-    console.log(roundNo)
+    alert(roundNo)
     var loginObj = { "Tournament": TournamentNames, "Id": document.cookie, "RoundNum": roundNo }
     console.log(loginObj)
     $.ajax({
@@ -66,9 +67,9 @@ function viewTournamentDetails(resp, i) {
         url: "Schedule",
         data: loginObj,
         success: function (response) {
-            var resp = JSON.parse(response);
-            console.log(resp);
-            viewExtraDetails(resp, i);
+            var res = JSON.parse(response);
+            console.log(res);
+            viewExtraDetails(res, i);
 
 
         },
@@ -77,16 +78,20 @@ function viewTournamentDetails(resp, i) {
         }
     })
 }
-function viewExtraDetails(resp,i) {
-    console.log(resp[0].player1)
+function viewExtraDetails(res,i) {
+    console.log(res)
     console.log(i)
-    const extraDetails = ` <div> <input type="number" id="MatchNum${i}" >(${resp,i})<button onclick="selectMatch(${resp[i].player1},${resp[i].player2})">Select Match</button><div id="a${i}"></div></div>`
+    const extraDetails = ` <div> <input type="number" id="MatchNum${i}" ><div id="a${i}"></div></div>`
     $("#ExtraDetails"+ String(i)).append($.parseHTML(extraDetails))
-}
 
-function selectMatch(resp1,resp2){
-    // console.log(resp)
-    //var a = document.getElementById("MatchNum"+String(i)).value;
-    const appending = `<span id="playerA">Player: ${resp1}</span> <span id="playerB">Player: ${resp2}</span> `
-    $("#a"+ String(i)).append($.parseHTML(appending))
-} 
+
+}
+//
+//function selectMatch(resp,i){
+//     console.log(resp)
+//     console.log("MatchNum"+String(i))
+//    var a = document.getElementById("MatchNum"+String(i));
+//    alert(a);
+//    const appending = `<span id="playerA">PlayerA:${resp[a].player1} </span> <span id="playerB">PlayerB: ${resp[a].player2}</span> `
+//    $("#a"+ String(i)).append($.parseHTML(appending))
+//}
